@@ -1,0 +1,30 @@
+.twitter-iot {
+  display: flex;
+  height: 100vh;
+  box-sizing: border-box;
+
+  &__intro {
+    max-width: 350px;
+    padding-left: 30px;
+  }
+
+  &__list {
+    padding: 30px;
+    overflow-y: scroll;
+  }
+
+  &__chart {
+    padding: 0 20px;
+    background: #f5f5f5;
+    box-shadow: 4px 4px 12px -1px rgba(166,166,166,1);
+  }
+
+  &__loading {
+    align-self: center;
+    padding-left: 200px;
+  }
+}
+
+
+
+

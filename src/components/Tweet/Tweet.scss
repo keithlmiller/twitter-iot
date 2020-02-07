@@ -1,0 +1,13 @@
+.tweet {
+  padding: 15px 30px;
+  margin: 20px;
+  border-radius: 5px;
+  box-shadow: 3px 3px 4px -1px rgb(190, 190, 190);
+  border: 1px solid rgb(211, 210, 210);
+
+  &__text {
+    padding-left: 30px;
+    color: #777;
+    font-style: italic;
+  }
+}
