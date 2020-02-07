@@ -9,6 +9,7 @@ function App() {
   const [topWords, setTopWords] = useState([]);
   const [isErrored, setIsErrored] = useState(false);
 
+  // check if pieces of a string should be included as word in counts
   const isNotValid = (word) => {
     const isTag = RegExp('^@').test(word)
     const isUrl = RegExp('^http').test(word);
@@ -18,6 +19,7 @@ function App() {
     return isTag || isUrl || isRT || !word.length || isSpecChar;
   }
 
+  // take an array of tweets and return an object with key as the word and value as the count of that word
   const getWordCounts = (tweetsArray) => {
     let wordsMap = {};
       for (let tweet of tweetsArray) {
@@ -36,14 +38,19 @@ function App() {
       return wordsMap;
   }
 
+  // fetch tweets and save them in state
   useEffect(() => {
     getTweets().then((response) => {
-      setTweets(response.statuses);
+      if (typeof response.statuses === Array) {
+        return setTweets(response.statuses);
+      }
+      setIsErrored(true); 
     }).catch(() => {
       setIsErrored(true);
     })
   }, [])
 
+  // when tweets change, compute the top common words
   useEffect(() => {
     if (tweets && tweets.length) {
       let wordsMap = getWordCounts(tweets);

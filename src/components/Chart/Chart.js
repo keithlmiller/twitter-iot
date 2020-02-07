@@ -36,6 +36,7 @@ class Chart extends Component {
       .domain([0, d3.max(values)])
       .range([0, chartWidth]);
 
+    // calculate visual data from each word and value, based on the scales
     const bars = words.map(d => {
       return {
         x: margin.left,
